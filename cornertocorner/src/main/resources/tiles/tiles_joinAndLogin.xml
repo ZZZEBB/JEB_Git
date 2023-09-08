@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 기본 레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<definition name="/joinAndLogin/joinMain" extends="baseLayout">
+		<put-attribute name="title" value="회원 가입 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/joinandlogin/joinMain.jsp"/>
+	</definition>
+	<definition name="/joinAndLogin/joinMember" extends="baseLayout">
+		<put-attribute name="title" value="개인 회원 가입 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/joinandlogin/joinMember.jsp"/>
+	</definition>
+	<definition name="/joinAndLogin/joinCom" extends="baseLayout">
+		<put-attribute name="title" value="사업자 회원 가입 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/joinandlogin/joinCom.jsp"/>
+	</definition>
+   
+   <definition name="/joinAndLogin/selectLogin" extends="baseLayout">
+      <put-attribute name="title" value="로그인 선택 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/joinandlogin/selectLogin.jsp" />
+   </definition>
+   
+   <definition name="/joinAndLogin/loginForm" extends="baseLayout">
+      <put-attribute name="title" value="사용자 로그인 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/joinandlogin/loginForm.jsp" />
+   </definition>
+   
+   <definition name="/joinAndLogin/loginFormCom" extends="baseLayout">
+      <put-attribute name="title" value="사업자 로그인 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/joinandlogin/loginFormCom.jsp" />
+   </definition>
+   
+   <definition name="/joinAndLogin/searchId" extends="baseLayout">
+      <put-attribute name="title" value="사용자 아이디 찾기" />
+      <put-attribute name="body" value="/WEB-INF/views/joinandlogin/searchId.jsp" />
+   </definition>
+   
+   <definition name="/joinAndLogin/findId" extends="baseLayout">
+         <put-attribute name="title" value="사용자 아이디 확인" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/findId.jsp" />
+      </definition>
+      
+      <definition name="/joinAndLogin/searchPw" extends="baseLayout">
+         <put-attribute name="title" value="아이디 찾기" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/searchPw.jsp" />
+      </definition>
+      
+      <definition name="/joinAndLogin/findPw" extends="baseLayout">
+         <put-attribute name="title" value="비밀번호 확인" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/findPw.jsp" />
+      </definition>
+      
+       <definition name="/joinAndLogin/searchIdCom" extends="baseLayout">
+         <put-attribute name="title" value="사업체 아이디 찾기" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/searchIdCom.jsp" />
+      </definition>
+      
+        <definition name="/joinAndLogin/findIdCom" extends="baseLayout">
+         <put-attribute name="title" value="사업체 아이디 확인" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/findIdCom.jsp" />
+      </definition>
+      
+        <definition name="/joinAndLogin/searchPwCom" extends="baseLayout">
+         <put-attribute name="title" value="사업체 비밀번호 찾기" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/searchPwCom.jsp" />
+      </definition>
+      
+        <definition name="/joinAndLogin/findPwCom" extends="baseLayout">
+         <put-attribute name="title" value="사업체 비밀번호 확인" />
+         <put-attribute name="body" value="/WEB-INF/views/joinandlogin/findPwCom.jsp" />
+      </definition>
+
+	
+
+</tiles-definitions>

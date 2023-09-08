@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 기본 레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<definition name="/main/main" extends="baseLayout">
+		<put-attribute name="title" value=" 메인페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/main/main.jsp" />
+	</definition>
+	
+	<definition name="/main/intro" extends="baseLayout">
+		<put-attribute name="title" value="회사소개 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/main/intro.jsp" />
+	</definition>
+	
+	<definition name="/main/totalSearch" extends="baseLayout">
+		<put-attribute name="title" value="회사소개 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/main/totalSearch.jsp" />
+	</definition>
+	
+	<definition name="/cart/cartList" extends="baseLayout">
+		<put-attribute name="title" value="장바구니" />
+		<put-attribute name="body" value="/WEB-INF/views/cart/cartList.jsp" />
+	</definition>
+	
+</tiles-definitions>

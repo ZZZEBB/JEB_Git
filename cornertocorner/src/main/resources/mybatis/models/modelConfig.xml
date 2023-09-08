@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.spring.ctc.joinandlogin.vo.AdminVO" alias="adminVO" />
+		<typeAlias type="com.spring.ctc.joinandlogin.vo.CompanyVO" alias="companyVO" />
+		<typeAlias type="com.spring.ctc.joinandlogin.vo.MemberVO" alias="memberVO" />
+		<typeAlias type="com.spring.ctc.board.vo.EventVO" alias="eventVO" />
+		<typeAlias type="com.spring.ctc.board.vo.FaqVO" alias="faqVO" />
+		<typeAlias type="com.spring.ctc.board.vo.NoticeVO" alias="noticeVO" />
+		<typeAlias type="com.spring.ctc.board.vo.QnaVO" alias="qnaVO" />
+		<typeAlias type="com.spring.ctc.board.vo.BoardDetailImageVO" alias="boardDetailImageVO"/>
+		<typeAlias type="com.spring.ctc.goods.GoodsVO" alias="goodsVO" />
+		<typeAlias type="com.spring.ctc.goods.ReviewVO" alias="reviewVO" />
+		<typeAlias type="com.spring.ctc.goods.flight.vo.FlightImageFileVO" alias="flightImageFileVO" />
+		<typeAlias type="com.spring.ctc.goods.hotel.vo.HotelImageFileVO" alias="hotelImageFileVO" />
+		<typeAlias type="com.spring.ctc.goods.pack.vo.PackImageFileVO" alias="packImageFileVO" />
+		<typeAlias type="com.spring.ctc.goods.rent.vo.RentImageFileVO" alias="rentImageFileVO" />
+<!--	<typeAlias type="com.spring.ctc.goods.flight.vo.GoodsFlightVO" alias="goodsFlightVO" />
+		<typeAlias type="com.spring.ctc.goods.hotel.vo.GoodsHotelVO" alias="goodsHotelVO" />
+		<typeAlias type="com.spring.ctc.goods.pack.vo.GoodsPackVO" alias="goodsPackVO" />
+		<typeAlias type="com.spring.ctc.goods.rent.vo.GoodsRentVO" alias="goodsRentVO" /> -->
+		<typeAlias type="com.spring.ctc.mypage.vo.MyPageVO" alias="myPageVO" />
+		<typeAlias type="com.spring.ctc.mypage.vo.ReviewVO" alias="reviewVO" />
+		<typeAlias type="com.spring.ctc.mypage.vo.ImageVO" alias="imageVO" />
+		<typeAlias type="com.spring.ctc.cart.vo.CartVO" alias="cartVO" />
+		<typeAlias type="com.spring.ctc.order.vo.OrderVO" alias="orderVO" />
+		<typeAlias type="com.spring.ctc.order.vo.SalesVO" alias="salesVO" />
+	</typeAliases>
+</configuration>
+
+

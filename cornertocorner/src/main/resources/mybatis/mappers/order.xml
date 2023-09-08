@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="mapper.order">
+   <resultMap id="orderGoodsResult" type="orderVO">
+      <result property="member_id" column="member_id"/>
+      <result property="goods_code" column="goods_code"/>
+      <result property="order_num" column="order_num"/>
+      <result property="goods_name" column="goods_name"/>
+      <result property="goods_category" column="goods_category"/>
+      <result property="goods_saleprice" column="goods_saleprice"/>
+      <result property="order_date" column="order_date"/>
+      <result property="order_status" column="order_status"/>
+      <result property="pay_status" column="pay_status"/>
+      <result property="pay_order_time" column="pay_order_time"/>
+      <result property="card_com_name" column="card_com_name"/>
+      <result property="card_pay_month" column="card_pay_month"/>
+      <result property="refund_price" column="refund_price"/>
+      <result property="total_charge_price" column="total_charge_price"/>
+      <result property="use_mileage" column="use_mileage"/>
+      <result property="plus_mileage" column="plus_mileage"/>
+      <result property="license_id" column="license_id"/>
+      <result property="license_date" column="license_date"/>
+      <result property="reser_start_date" column="reser_start_date"/>
+      <result property="reser_end_date" column="reser_end_date"/>
+      <result property="reser_period" column="reser_period"/>
+      <result property="reser_headcount" column="reser_headcount"/>
+   </resultMap>
+	
+   <select id="orderList" parameterType="java.util.Map" resultType="orderVO">
+		SELECT * FROM reservation
+   </select>
+   
+   <select id="selectMyOrderList" resultMap="orderGoodsResult"  parameterType="orderVO"  >
+       <![CDATA[
+         select *
+         from reservation
+         where DATE_FORMAT(pay_order_time,'%Y-%m-%d')=DATE_FORMAT(sysdate,'%Y-%m-%d')
+           and member_id=#{member_id}
+           order by pay_order_time desc
+      ]]>
+   </select>
+   
+	<insert id="insertNewOrder" parameterType="orderVO">
+		<![CDATA[
+			insert into reservation(member_id,
+		                   order_num,
+		                   goods_name,
+		                   goods_code,
+		                   goods_category,
+		                   goods_saleprice,
+		                   card_pay_month,
+		                   card_com_name)
+	          values(#{member_id},
+	                #{order_num},
+	                #{goods_name},
+	                #{goods_code},
+	                #{goods_category},
+	                #{goods_saleprice},
+	                #{card_pay_month},
+	                #{card_com_name})
+		]]>
+	</insert>
+  	
+   <select id="selectOrderID" resultType="int"  >
+       <![CDATA[
+          select IFNULL(max(order_num), 0) + 1 from reservation
+       ]]>
+   </select>
+   
+   <select id="selectMyOrder" resultMap="orderGoodsResult"   parameterType="String"  >
+       <![CDATA[
+          select * from reservation
+            where DATE_FORMAT(pay_order_time,'%Y-%m-%d')=DATE_FORMAT(sysdate,'%Y-%m-%d') 
+            and order_num=#{order_num}
+            order by pay_order_time desc
+       ]]>
+   </select>
+   
+   <delete id="deleteGoodsFromCart" parameterType="orderVO">
+      <![CDATA[
+        delete from cart
+        where goods_code=#{goods_code}
+      ]]>
+   </delete>
+   
+	<!-- 마일리지 조회 -->
+    <select id="selectMyOrderHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
+       <![CDATA[
+        select * from reservation
+          where member_id=#{member_id}
+          and DATE_FORMAT(pay_order_time, '%Y-%m-%d') between date_format(#{beginDate},'%Y-%m-%d') and date_format(#{endDate},'%Y-%m-%d')
+           order by pay_order_time desc
+       ]]>
+   </select>
+</mapper>

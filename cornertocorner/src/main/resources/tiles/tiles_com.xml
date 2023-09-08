@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 사업체 레이아웃 -->
+	<definition name="comSide" template="/WEB-INF/views/common/comSideLayout.jsp">
+		<put-attribute name="comHeader" value="/WEB-INF/views/common/comHeader.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="comSide" value="/WEB-INF/views/common/comSide.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<!-- 사업체 이벤트 게시물 목록 페이지 -->
+	<definition name="/comBoard/comEventList" extends="comSide">
+		<put-attribute name="title" value="사업체 이벤트 게시물 목록 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/company/board/comEventList.jsp" />
+	</definition>
+	
+	<!-- 사업체 이벤트 게시물 등록 페이지 -->
+	<definition name="/comBoard/comEventForm" extends="comSide">
+		<put-attribute name="title" value="사업체 이벤트 게시물 등록 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/company/board/comEventForm.jsp" />
+	</definition>
+	
+	<!-- 사업체 예약관리 페이지-->
+   <definition name="/comOrder/reservation" extends="comSide">
+      <put-attribute name="title" value="사업체 예약 관리 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/company/order/comOrderList.jsp" />
+   </definition>
+   
+   <!-- 사업체 예약관리 페이지이동-->
+   <definition name="/comOrder/reservationfind" extends="comSide">
+      <put-attribute name="title" value="사업체 예약 관리 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/company/order/comOrderList.jsp" />
+   </definition>
+	
+</tiles-definitions>

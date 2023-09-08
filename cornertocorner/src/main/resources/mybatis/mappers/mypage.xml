@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="mapper.mypage">
+	<resultMap id="memberResult" type="memberVO">
+		<result property="member_num" column="member_num"/>
+		<result property="member_id" column="member_id"/>
+		<result property="member_pw" column="member_pw"/>
+		<result property="member_name" column="member_name"/>
+		<result property="member_ph1" column="member_ph1"/>
+		<result property="member_ph2" column="member_ph2"/>
+		<result property="member_rrn1" column="member_rrn1"/>
+		<result property="member_rrn2" column="member_rrn2"/>
+		<result property="member_email" column="member_email"/>
+		<result property="member_email_yn" column="member_email_yn"/>
+		<result property="member_zipcode" column="member_zipcode"/>
+		<result property="member_road_address" column="member_road_address"/>
+		<result property="member_local_address" column="member_local_address"/>
+		<result property="member_rest_address" column="member_rest_address"/>
+		<result property="member_joindate" column="member_joindate"/>
+		<result property="member_status" column="member_status"/>
+		<result property="member_unregister_date" column="member_unregister_date"/>
+		<result property="member_deldate" column="member_deldate"/>
+	</resultMap>
+	<resultMap id="comResult" type="companyVO">
+		<result property="com_num" column="com_num"/>
+		<result property="com_id" column="com_id"/>
+		<result property="com_pw" column="com_pw"/>
+		<result property="com_name" column="com_name"/>
+		<result property="com_ceo" column="com_ceo"/>
+		<result property="com_tel1" column="com_tel1"/>
+		<result property="com_tel2" column="com_tel2"/>
+		<result property="com_tel3" column="com_tel3"/>
+		<result property="com_email" column="com_email"/>
+		<result property="com_crn1" column="com_crn1"/>
+		<result property="com_crn2" column="com_crn2"/>
+		<result property="com_crn3" column="com_crn3"/>
+		<result property="com_email_yn" column="com_email_yn"/>
+		<result property="com_zipcode" column="com_zipcode"/>
+		<result property="com_road_address" column="com_road_address"/>
+		<result property="com_local_address" column="com_local_address"/>
+		<result property="com_rest_address" column="com_rest_address"/>
+		<result property="com_joindate" column="com_joindate"/>
+		<result property="com_status" column="com_status"/>
+		<result property="com_unregister_date" column="com_unregister_date"/>
+		<result property="com_deldate" column="com_deldate"/>
+	</resultMap>
+	<resultMap id="orderGoodsResult" type="orderVO">
+      <result property="member_id" column="member_id"/>
+      <result property="goods_code" column="goods_code"/>
+      <result property="order_num" column="order_num"/>
+      <result property="goods_name" column="goods_name"/>
+      <result property="goods_category" column="goods_category"/>
+      <result property="goods_saleprice" column="goods_saleprice"/>
+      <result property="order_date" column="order_date"/>
+      <result property="order_status" column="order_status"/>
+      <result property="pay_order_time" column="pay_order_time"/>
+      <result property="card_com_name" column="card_com_name"/>
+      <result property="card_pay_month" column="card_pay_month"/>
+      <result property="refund_price" column="refund_price"/>
+      <result property="total_charge_price" column="total_charge_price"/>
+      <result property="use_mileage" column="use_mileage"/>
+      <result property="plus_mileage" column="plus_mileage"/>
+      <result property="license_id" column="license_id"/>
+      <result property="license_date" column="license_date"/>
+      <result property="reser_start_date" column="reser_start_date"/>
+      <result property="reser_end_date" column="reser_end_date"/>
+      <result property="reser_period" column="reser_period"/>
+      <result property="reser_headcount" column="reser_headcount"/>
+   </resultMap>
+   
+   <resultMap id="reviewResult" type="reviewVO">
+         <result property="member_id" column="member_id"/>
+         <result property="review_num" column="review_num"/>
+         <result property="parent_num" column="parent_num"/>
+         <result property="goods_code" column="goods_code"/>
+         <result property="review_content" column="review_content"/>
+         <result property="review_write_date" column="review_write_date"/>
+         <result property="review_title" column="review_title"/>
+         <result property="imageFileName" column="imageFileName"/>
+      </resultMap>
+      
+      <resultMap id="imgResult" type="imageVO">
+         <result property="imageFileNO" column="imageFileNO"/>
+         <result property="articleNO" column="articleNO"/>
+         <result property="imageFileName" column="imageFileName"/>
+      </resultMap>
+	
+	<select id="selectMyMember" resultType="memberVO" parameterType="java.util.Map">
+		<![CDATA[ SELECT * FROM member WHERE member_id = #{member_id} ]]>
+	</select>
+	
+	<select id="selectMyCompany" resultType="companyVO" parameterType="java.util.Map">
+		<![CDATA[ SELECT * FROM company WHERE com_id = #{company_id} ]]>
+	</select>
+	
+	<!--  reservation(주문)목록 출력  -->
+	<select id="selectOrderList" resultType="orderVO" parameterType="java.util.Map">
+		<![CDATA[ SELECT * FROM reservation WHERE member_id = #{member_id} ]]>
+	</select>
+	
+	<!-- 회원정보 수정 -->
+   <update id="updateMember" parameterType="java.util.Map">
+         update member
+            <set>
+               <if test=" member_pw!='' and member_pw!=null">
+                 member_pw=#{member_pw},
+               </if>
+                <if test=" member_rrn1 !='' and member_rrn1 !=null">
+                  member_rrn1 =#{member_rrn1},
+               </if>
+                <if test=" member_rrn2 !='' and member_rrn2 !=null">
+                  member_rrn2 =#{member_rrn2},
+               </if>
+               <if test=" member_ph1 !='' and member_ph1 !=null">
+                  member_ph1 = #{member_ph1},
+               </if>
+               <if test=" member_ph2 !='' and member_ph2 !=null">
+                  member_ph2 = #{member_ph2},
+               </if>
+               <if test=" member_ph3!='' and member_ph3 !=null">
+                  member_ph3 = #{member_ph3},
+               </if>
+               <if test=" member_email !='' and member_email !=null">
+                  member_email =#{member_email},
+               </if>
+               <if test=" member_zipcode!='' and member_zipcode!=null">
+                  member_zipcode=#{member_zipcode},
+               </if>
+               <if test=" member_roadAddress!='' and member_roadAddress!=null">
+                  member_roadAddress=#{member_roadAddress},
+               </if>              
+               <if test=" member_local_address !='' and member_local_address !=null">
+                  member_local_address =#{member_local_address},
+               </if>
+               <if test=" member_rest_address!='' and member_rest_address!=null">
+                  member_rest_address=#{member_rest_address}
+               </if>
+            </set>
+         where member_id = #{member_id}
+   </update>
+   
+   <!-- 회원 탈퇴 -->
+    <update id="deleteMember" parameterType="java.util.Map">
+      update member 
+      set member_status = 2
+       where member_id = #{member_id} AND
+              member_pw = #{member_pw}
+   </update>
+   
+   <!-- 사업체회원정보 수정 -->
+   <update id="updatecompany" parameterType="java.util.Map">
+         update company
+            <set>
+               <if test=" com_pw!='' and com_pw!=null">
+                 com_pw=#{com_pw},
+               </if>
+                <if test=" com_crn1 !='' and com_crn1 !=null">
+                  com_rrn1 =#{com_rrn1},
+               </if>
+                <if test=" com_rrn2 !='' and com_rrn2 !=null">
+                  com_rrn2 =#{com_rrn2},
+               </if>
+               <if test=" com_tel1 !='' and com_tel1 !=null">
+                  com_tel1 = #{com_tel1},
+               </if>
+               <if test=" com_tel2 !='' and com_tel2 !=null">
+                  com_tel2 = #{com_tel2},
+               </if>
+               <if test=" com_tel3!='' and com_tel3 !=null">
+                  com_tel3 = #{com_tel3},
+               </if>
+               <if test=" com_email !='' and com_email !=null">
+                  com_email =#{com_email},
+               </if>
+               <if test=" com_zipcode!='' and com_zipcode!=null">
+                  com_zipcode=#{com_zipcode},
+               </if>
+               <if test=" com_roadAddress!='' and com_roadAddress!=null">
+                  com_roadAddress=#{com_roadAddress},
+               </if>              
+               <if test=" com_local_address !='' and com_local_address !=null">
+                  com_local_address =#{com_local_address},
+               </if>
+               <if test=" com_rest_address!='' and com_rest_address!=null">
+                  com_rest_address=#{com_rest_address}
+               </if>
+            </set>
+         where com_id = #{com_id}
+   </update>
+   
+   <!-- 사업체 회원 탈퇴 -->
+      <update id="deleteCompany" parameterType="java.util.Map">
+      update company 
+      set com_status = 2
+       where com_id = #{com_id} AND
+              com_pw = #{com_pw}
+   </update>
+   
+   <select id="reviewList" resultType="reviewVO" parameterType="java.util.Map">
+      <![CDATA[ SELECT * FROM review WHERE member_id=#{member_id} ]]>
+   </select>
+   
+   <select id="reviewDetail" resultType="reviewVO" parameterType="int" >
+      <![CDATA[
+         select * from review where review_num = #{review_num}
+      ]]>
+   </select>
+   
+   <insert id="insertNewReview" parameterType="java.util.Map">
+    <![CDATA[
+   INSERT into review(review_num, review_title, review_content, imageFileName, member_id)
+   VALUES(#{review_num},#{review_title},#{review_content},#{imageFileName},#{member_id})
+    ]]>
+   </insert>
+   
+   <select id="selectNewReviewNO" resultType="int">
+   <![CDATA[
+   SELECT nvl(max(review_num), 0) + 1 from review
+   ]]>
+   </select>
+   
+   <update id="updateReview" parameterType="java.util.Map">
+      update review
+      set review_title=#{review_title},
+      review_content=#{review_content}
+      <if test="imageFileName!='' and imageFileName!=null">
+      , imageFileName=#{imageFileName}
+      </if>
+      where review_num=#{review_num}
+   </update>
+   
+   <delete id="deleteReview" parameterType="int">
+      <![CDATA[ 
+         delete from review
+         where (review_num=#{review_num} || parent_num=#{review_num} || (review_num=#{review_num} && parent_num=0) )
+      ]]>
+   </delete>
+   
+   <select id="selectNewImageFileNO" resultType="int">
+      <![CDATA[
+         SELECT nvl(max(imageFileNO),0) from t_imageFile
+      ]]>
+   </select>
+
+   <select id="selectImageFileList" resultMap="imgResult" parameterType="int">
+      <![CDATA[
+         SELECT * from t_imageFile
+         where review_num=#{review_num}
+      ]]>
+   </select>
+   
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 관리자 모드 레이아웃 -->
+	<definition name="adminSide" template="/WEB-INF/views/common/adminSideLayout.jsp">
+		<put-attribute name="adminHeader" value="/WEB-INF/views/common/adminHeader.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="adminSide" value="/WEB-INF/views/common/adminSide.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<!-- 관리자 매출관리 페이지 -->
+	<definition name="/adminSales/adminSalesMain" extends="adminSide">
+		<put-attribute name="title" value="관리자 매출관리 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/sales/adminSalesMain.jsp" />
+	</definition>
+	
+	<!-- 관리자 전체 상품 조회 페이지 -->
+	<definition name="/adminGoods/adminGoodsList" extends="adminSide">
+		<put-attribute name="title" value="관리자 매출관리 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/goods/adminGoodsList.jsp" />
+	</definition>
+	
+	<!-- 관리자 전체 주문 조회 페이지 -->
+	<definition name="/adminOrder/adminAllOrderList" extends="adminSide">
+		<put-attribute name="title" value="관리자 매출관리 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/order/adminOrderList.jsp" />
+	</definition>
+	
+</tiles-definitions>

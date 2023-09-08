@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 기본 레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<definition name="/order/orderEachGoods" extends="baseLayout">
+	   <put-attribute name="title" value="상품 주문 페이지" />
+	   <put-attribute name="body" value="/WEB-INF/views/order/order.jsp"/>
+	</definition>
+
+	<definition name="/order/orderAllCartGoods" extends="baseLayout">
+		<put-attribute name="title" value="상품 예약/결제 완료" />
+		<put-attribute name="body" value="/WEB-INF/views/order/order.jsp" />
+	</definition>
+	
+	<definition name="/order/payToOrderGoods" extends="baseLayout">
+		<put-attribute name="title" value="상품 예약/결제 완료" />
+		<put-attribute name="body" value="/WEB-INF/views/order/finishOrder.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

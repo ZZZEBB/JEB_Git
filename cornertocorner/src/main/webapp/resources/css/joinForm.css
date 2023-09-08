@@ -1,0 +1,58 @@
+.clear {
+	clear: both;
+	margin-bottom: 100px;
+}
+#join_member{
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 35px;
+}
+
+#detail_table table {
+	width: 590px; 
+	border-top-color:#dce4f0; 
+	border-bottom-color:#dce4f0; 
+	border-top-width: 2px; 
+	border-bottom-width: 1px; 
+	border-top-style: solid; 
+	border-bottom-style: solid; 
+	border-collapse: collapse;
+	margin: -20px auto;
+}
+#detail_table table td {
+	padding: 7px 0px 7px 7px;
+}
+#detail_table table tr.dot_line {
+	border-bottom-color: #dce4f0; border-bottom-width: 1px; border-bottom-style: dotted;
+}
+#detail_table table td.fixed_join {
+	width: 130px; 
+	font-weight: bold; 
+	color: #ffffff; 
+	background: #0092c9;
+	text-align: center;
+}
+input[type=text],input[type=password] {
+	outline-color: #00aff0;
+	border: 1px solid #ced9ea;
+	padding-left: 0.3em;
+}
+input[type=button]{
+	border: 1px solid #00aff0;
+	background-color: #00aff0;
+	color: #ffffff;
+	padding: .0em .8em .0em .8em;
+}
+input[type=submit] {
+	border: 1px solid #00aff0;
+	background-color: #00aff0;
+	color: #ffffff;
+	padding: 1em 3em 1em 3em;
+}
+#detail_table a {
+	text-decoration: none;
+	border: 1px solid #00aff0;
+	background-color: #00aff0;
+	color: #ffffff;
+	padding: .1em .8em .2em .8em;
+}

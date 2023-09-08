@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- 기본 레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<!-- 사용자 레이아웃 -->
+	<definition name="side" template="/WEB-INF/views/common/sideLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+	
+	<!-- 이벤트 목록 페이지 -->
+	<definition name="/board/eventList" extends="baseLayout">
+		<put-attribute name="title" value="이벤트 목록 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/board/eventList.jsp" />
+	</definition>
+	
+	<!-- 이벤트 상세 페이지 -->
+	<definition name="/board/eventDetail" extends="baseLayout">
+		<put-attribute name="title" value="이벤트 상세 페이지" />
+		<put-attribute name="body" value="/WEB-INF/views/board/eventDetail.jsp" />
+	</definition>
+	
+	<!-- 고객센터 - 1:1 문의 페이지 -->
+	<definition name="/board/oneQnaForm" extends="side">
+		<put-attribute name="title" value="1:1문의 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/oneQnaForm.jsp"/>
+	</definition>
+	
+	<!-- 고객센터 - FAQ 페이지 -->
+	<definition name="/board/faq" extends="side">
+		<put-attribute name="title" value="자주묻는질문 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/faq.jsp"/>
+	</definition>
+	
+	<!-- 고객센터 - 공지사항 페이지 -->
+	<definition name="/board/noticeList" extends="side">
+		<put-attribute name="title" value="공지사항 목록 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/noticeList.jsp"/>
+	</definition>
+	
+   <!-- 고객센터 - 공지사항 상세 페이지 -->
+   <definition name="/board/noticeDetail" extends="side">
+      <put-attribute name="title" value="공지사항 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/board/noticeDetail.jsp" />
+   </definition>
+   
+</tiles-definitions>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	<!-- 기본 레이아웃 -->
+	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+	   <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+	   <put-attribute name="body" value="" />
+	   <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+	</definition>
+   
+	<definition name="/goods/goodsRentSearch" extends="baseLayout">
+		<put-attribute name="title" value="렌트 목록 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsRentSearch.jsp"/>
+	</definition>
+	
+	<definition name="/goods/goodsRentDetail" extends="baseLayout">
+		<put-attribute name="title" value="렌트 상세 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsRentDetail.jsp"/>
+	</definition>
+	
+	<definition name="goods/rentsearchWord" extends="baseLayout">
+		<put-attribute name="title" value="렌트 검색 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsRentSearch.jsp"/>
+	</definition>
+	
+	<definition name="/goods/goodsFlightSearch" extends="baseLayout">
+		<put-attribute name="title" value="항공 목록 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsFlightSearch.jsp"/>
+	</definition>
+	
+	<!-- <definition name="/goods/goodsFlightSearch" extends="baseLayout">
+		<put-attribute name="title" value="항공 목록 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/flight.jsp"/>
+	</definition> -->
+	
+	<definition name="/goods/goodsFlightKeyWordSearch" extends="baseLayout">
+		<put-attribute name="title" value="항공 검색 조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsFlightSearch.jsp"/>
+	</definition>
+
+	<definition name="/goods/goodsHotelSearch" extends="baseLayout">
+		<put-attribute name="title" value="호텔 목록 조회" />
+		<put-attribute name="body" value="/WEB-INF/views/goods/goodsHotelSearch.jsp" />
+	</definition>
+	
+	<definition name="/goods/goodsHotelDetail" extends="baseLayout">
+	   <put-attribute name="title" value="호텔 상세 조회" />
+	   <put-attribute name="body" value="/WEB-INF/views/goods/goodsHotelDetail.jsp" />
+	</definition>
+	
+	<definition name="/kakaoLogin" extends="baseLayout">
+		<put-attribute name="title" value="카카오 로그인 테스트"/>
+		<put-attribute name="body" value="/WEB-INF/views/kakaologin/kakaologin.jsp"/>
+	</definition>
+	
+	<definition name="/goods/goodsPackageSearch" extends="baseLayout">
+      <put-attribute name="title" value="패키지 목록 조회"/>
+      <put-attribute name="body" value="/WEB-INF/views/goods/goodsPackageSearch.jsp"/>
+   </definition>
+   
+   <definition name="/goods/goodsPackageDetail" extends="baseLayout">
+      <put-attribute name="title" value="패키지 상세 조회"/>
+      <put-attribute name="body" value="/WEB-INF/views/goods/goodsPackageDetail.jsp"/>
+   </definition>
+</tiles-definitions>
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="mapper.cart">
+	<resultMap id="cartResult" type="cartVO">
+		<result property="member_id" column="member_id"/>
+		<result property="goods_code" column="goods_code"/>
+		<result property="cart_id" column="cart_id"/>
+		<result property="cart_headcount" column="cart_headcount"/>
+		<result property="creDate" column="creDate"/>
+	</resultMap>
+	<resultMap id="goodsResult" type="goodsVO">
+		<result property="com_id" column="com_id"/>
+		<result property="airport_num" column="airport_num"/>
+		<result property="goods_code" column="goods_code"/>
+		<result property="goods_category" column="goods_category"/>
+		<result property="goods_name" column="goods_name"/>
+		<result property="package_hotel_name" column="package_hotel_name"/>
+		<result property="goods_exp" column="goods_exp"/>
+		<result property="class_grade" column="class_grade"/>
+		<result property="goods_location" column="goods_location"/>
+		<result property="goods_latitude" column="goods_latitude"/>
+		<result property="goods_longitude" column="goods_longitude"/>
+		<result property="room_type" column="room_type"/>
+		<result property="car_model" column="car_model"/>
+		<result property="goods_price" column="goods_price"/>
+		<result property="goods_saleprice" column="goods_saleprice"/>
+		<result property="goods_departures" column="goods_departures"/>
+		<result property="goods_departure_date" column="goods_departure_date"/>
+		<result property="goods_departure_time" column="goods_departure_time"/>
+		<result property="goods_arrivals" column="goods_arrivals"/>
+		<result property="goods_arrival_date" column="goods_arrival_date"/>
+		<result property="goods_arrival_time" column="goods_arrival_time"/>
+		<result property="goods_status" column="goods_status"/>
+		<result property="goods_charge" column="goods_charge"/>
+		<result property="goods_mileage" column="goods_mileage"/>
+		<result property="goods_entered_date" column="goods_entered_date"/>
+	</resultMap>
+	
+	<select id="selectCartList" parameterType="cartVO" resultMap="cartResult">
+		<![CDATA[ select cart_id, goods_code, member_id, cart_headcount, cart_credate from cart where member_id=#{member_id} order by goods_code ]]>
+	</select>
+	
+	<!--  장바구니 테이블에 등록된 상품 번호를 이용해 상품 정보를 조회  -->
+	<select id="selectGoodsList" resultMap="goodsResult" parameterType="java.util.Map">
+		<![CDATA[ SELECT g.* FROM goods g WHERE g.goods_code IN ]]>
+		<foreach item="item" collection="list" open="(" separator="," close=")"> #{item.goods_code} </foreach>
+		ORDER BY g.goods_code
+	</select>
+	
+	<!--  장바구니 테이블에 추가하기전에 그 상품 번호가 장바구니에 담겨있는지 조회  -->
+	<select id="selectCountInCart" resultType="String" parameterType="cartVO">
+		<![CDATA[ select case count(*) when 0 then 'false' else 'true' END result from cart where goods_code=#{goods_code} and member_id=#{member_id} ]]>
+	</select>
+	
+	<insert id="insertGoodsInCart" parameterType="cartVO">
+		<![CDATA[ insert into cart(cart_id, goods_code, member_id ) values(#{cart_id}, #{goods_code}, #{member_id}) ]]>
+	</insert>
+	
+	<update id="updateCartGoodsQty" parameterType="cartVO">
+		<![CDATA[ update cart set cart_headcount=#{cart_headcount} where member_id=#{member_id} and goods_code=#{goods_code} ]]>
+	</update>
+	
+	<delete id="deleteCartGoods" parameterType="java.util.Map">
+		<![CDATA[ delete from cart where goods_code=#{goods_code} and member_id = #{member_id} ]]>
+	</delete>
+	
+	<select id="selectMaxCartId" resultType="int">
+		<![CDATA[ select ifnull(max(cart_id), 0) + 1 from cart ]]>
+	</select>
+</mapper>

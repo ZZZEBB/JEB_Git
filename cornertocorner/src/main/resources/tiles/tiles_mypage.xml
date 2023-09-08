@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<!--  사용자 레이아웃  -->
+	<definition name="side" template="/WEB-INF/views/common/sideLayout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp"/>
+		<put-attribute name="body" value=""/>
+		<put-attribute name="side" value="/WEB-INF/views/common/side.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp"/>
+	</definition>
+	
+	<!--  마이페이지 메인 - 나의 회원정보 페이지  -->
+	<definition name="/mypage/myInfo" extends="side">
+		<put-attribute name="title" value="마이페이지 - 나의 회원정보"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/myInfo.jsp"/>
+	</definition>
+	
+	<!--  마이페이지 - 회원 탈퇴 페이지 이동  -->
+	<definition name="/mypage/mypageDelete" extends="side">
+		<put-attribute name="title" value="마이페이지 - 회원 탈퇴 페이지"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/delMember.jsp"/>
+	</definition>
+	
+	<!--  마이페이지 - 나의 마일리지 페이지  -->
+	<definition name="/mypage/listMyOrderHistory" extends="side">
+       <put-attribute name="title" value="내 주문 상세 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myMileage.jsp" />
+    </definition>
+	
+	<!--  마이페이지 - 나의 문의내역 페이지  -->
+	<definition name="/mypage/myQna" extends="side">
+		<put-attribute name="title" value="마이페이지 - 나의 문의내역"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/myQna.jsp"/>
+	</definition>
+	
+	<!--  마이페이지 - 나의 예약내역 조회  -->
+	<definition name="/mypage/myOrder" extends="side">
+		<put-attribute name="title" value="마이페이지 - 나의 예약내역조회"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/myOrder.jsp"/>
+	</definition>
+	
+	<!--  마이페이지 - 나의 예약내역 조회  -->
+	<definition name="/mypage/myDetailInfo" extends="side">
+		<put-attribute name="title" value="마이페이지 - 나의 회원정보수정"/>
+		<put-attribute name="body" value="/WEB-INF/views/mypage/myDetailInfo.jsp"/>
+	</definition>
+	
+   <!-- 마이페이지 - 나의 여행후기 페이지 -->
+   <definition name="/mypage/myReview" extends="side">
+      <put-attribute name="title" value="마이페이지 - 나의 여행후기" />
+      <put-attribute name="body" value="/WEB-INF/views/mypage/myReview.jsp" />
+   </definition>
+   
+    <!-- 마이페이지 - 나의 여행후기 상세 페이지 -->
+   <definition name="/mypage/myReviewDetail" extends="side">
+      <put-attribute name="title" value="마이페이지 - 나의 여행후기 상세 페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/mypage/myReviewDetail.jsp" />
+   </definition>
+   
+   <!-- 마이페이지 - 나의 여행후기 상세 페이지 -->
+   <definition name="/mypage/reviewForm" extends="baseLayout">
+    <put-attribute name="title" value="여행후기 등록 페이지" />
+    <put-attribute name="body" value="/WEB-INF/views/mypage/myReviewAdd.jsp" />
+   </definition>
+</tiles-definitions>
